@@ -12,7 +12,8 @@ const {
 } = require('./controller/users');
 
 const {
-    CreateSupplier
+    CreateSupplier,
+    SuppliersList
 } = require('./controller/suppliers');
 
 const {
@@ -40,6 +41,7 @@ routes.use(VerifyToken);
 routes.get('/users/profile', UserProfile);
 routes.put('/users', EditUser);
 routes.delete('/users', DeleteUser);
+routes.get('/suppliers', SuppliersList);
 
 routes.use(AdminToken);
 routes.get('/users', ListOfUsers);

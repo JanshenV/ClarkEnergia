@@ -43,4 +43,19 @@ async function CreateSupplier(req, res) {
     };
 };
 
-module.exports = { CreateSupplier }
+async function SuppliersList(req, res) {
+    try {
+        const suppliers = await knex('fornecedores');
+
+        return res.status(200).json(suppliers);
+    } catch ({ message }) {
+        return res.status(400).json({
+            message
+        });
+    };
+};
+
+module.exports = {
+    CreateSupplier,
+    SuppliersList
+}
