@@ -12,7 +12,7 @@ const {
 
 
 async function CreateUser(req, res) {
-    const {
+    let {
         nome,
         email,
         senha
@@ -21,6 +21,7 @@ async function CreateUser(req, res) {
     try {
         await yupCreateUser.validate(req.body);
 
+        email = email.toLowerString();
         const existingEmail = await findEmail(email);
 
         if (existingEmail) return res.status(400).json({
@@ -55,7 +56,6 @@ async function EditUser(req, res) {
         email,
         senha
     } = req.body;
-
     const { id } = req.user;
 
     const reqBodyItems = Object.keys(req.body).length;
@@ -68,6 +68,7 @@ async function EditUser(req, res) {
     try {
         await yupEditUser.validate(req.body);
 
+        email = email.toLowerString();
         const user = await knex('usuarios')
             .where({ id })
             .first();
@@ -138,7 +139,7 @@ async function DeleteUser(req, res) {
 };
 
 async function UserLogin(req, res) {
-    const {
+    let {
         email,
         senha
     } = req.body;
@@ -146,6 +147,7 @@ async function UserLogin(req, res) {
     try {
         await yupUserLogin.validate(req.body);
 
+        email = email.toLowerString();
         const user = await findEmail(email);
         if (!user) return res.status(404).json({
             message: 'Email ou senha não conferem.'
