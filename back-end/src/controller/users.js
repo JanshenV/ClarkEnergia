@@ -38,7 +38,9 @@ async function CreateUser(req, res) {
         await knex('usuarios')
             .insert(newUserData);
 
-        return res.status(201).json();
+        return res.status(201).json({
+            message: 'Cadastro realizado.'
+        });
 
     } catch ({ message }) {
         res.status(400).json({
