@@ -1,10 +1,14 @@
-import './styles.css';
-import SignUpForm from '../../components/signUpForm';
+import CustomForm from '../../components/customForm';
+import { UserSignUp } from '../../apiCalls/index.js';
+
 
 export default function SignUp() {
     return (
-        <div className='SignUp-container'>
-            <SignUpForm />
-        </div>
+        <CustomForm
+            title='Cadastro'
+            formClass='signUp-form'
+            buttonText='Cadastrar-se'
+            apiCall={UserSignUp}
+        />
     );
 };

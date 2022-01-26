@@ -1,5 +1,9 @@
 import './App.css';
 import SignUp from './pages/signUp';
+import Login from './pages/login';
+import Home from './pages/home';
+
+
 import {
     Route,
     Routes,
@@ -11,7 +15,9 @@ export default function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/signup' exact element={<SignUp />}/>
+          <Route path='/signup' exact element={<SignUp />} />
+          <Route path='/' exact element={<Login />} />   
+          <Route path='/home' exact element={<Home />} />   
         </Routes>
       </Router>
     </div>

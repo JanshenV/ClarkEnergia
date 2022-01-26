@@ -1,22 +1,29 @@
-.signUpForm-container {
+.customForm-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(64, 68, 67);
+    background-color: rgb(149, 124, 197);
     min-height: 100vh;
 }
 
-.signUp-form {
+.customForm-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #15172b;
     box-sizing: border-box;
     width: 30vw;
     height: 500px;
     border-radius: 20px;
     padding: 20px;
+}
+
+.signUp-form {
+    background-color: #15172b;
+}
+
+.login-form {
+    background-color: #09749e;
 }
 
 .title {
@@ -31,7 +38,7 @@
     height: 25px;
 }
 
-.signUp-form label {
+.customForm-container form label {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-size: larger;
@@ -39,7 +46,7 @@
     margin: 10px 0 10px 0;
 }
 
-.signUp-form input {
+.customForm-container form input {
     font-size: larger;
     height: 50px;
     width: 320px;
@@ -53,7 +60,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.signUp-form button {
+.customForm-container form button {
     margin-top: 50px;
     width: 160px;
     height: 50px;
@@ -66,15 +73,15 @@
     font-size: larger;
 }
 
-.signUp-form button:hover {
+.customForm-container form button:hover {
     background-color: white;
     color: rgb(15, 192, 30);
 }
 
-.registred-container {
+.signup-login-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 20px;
     background-color: rgb(88, 88, 230);
     color: white;
@@ -83,11 +90,12 @@
     border-radius: 12px;
 }
 
-.registred-container button {
+.signup-login-container button {
     width: 80px;
     height: 25px;
     border-radius: 6px;
     background-color: rgb(48, 153, 48);
     color: rgb(255, 255, 255);
     cursor: pointer;
+    margin-left: 16px;
 }
