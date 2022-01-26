@@ -19,9 +19,16 @@
     padding: 20px;
 }
 
-.signUp-form h1 {
+.title {
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: white;
+    background-color: crimson;
+    border-radius: 5px;
+    height: 25px;
 }
 
 .signUp-form label {

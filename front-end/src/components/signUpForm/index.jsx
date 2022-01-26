@@ -1,5 +1,9 @@
 import './styles.css';
 import { useState } from 'react';
+import {
+    UserSignUp
+} from '../../apiCalls';
+
 
 export default function SignUpForm() {
 
@@ -9,10 +13,15 @@ export default function SignUpForm() {
         senha: ''
     });
 
+    const [signUpError, setSignUpError] = useState({
+        message: ''
+    });
+    
 
     function handleSignUpData(event) {
         const itemType = event.target.type;
         const itemValue = event.target.value;
+        setSignUpError({ message: '' });
         
         if (itemType === "text") return setSignUpData({
             ...signUpData,
@@ -33,8 +42,10 @@ export default function SignUpForm() {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        //POST API CALL
-        console.log(signUpData);
+        const {message} = await UserSignUp(signUpData);
+    
+        if (!message.includes('Cadastro')) return setSignUpError({ message });
+        return setSignUpError({ message: '' });
     }
 
 
@@ -49,22 +60,31 @@ export default function SignUpForm() {
                     Cadastro
                 </h1>
 
+                {signUpError &&
+                    <p className='error'>
+                        {signUpError.message}
+                    </p>
+                }
+
                 <label>Nome: </label>
                 <input
                     type="text"
-                    onChange={(event) => handleSignUpData(event) }
+                    required
+                    onChange={(event) => handleSignUpData(event)}
                 />
 
                 <label>Email: </label>
                 <input
                     type="email"
-                    onChange={(event) => handleSignUpData(event) }
+                    required
+                    onChange={(event) => handleSignUpData(event)}
                 />
 
                 <label>Senha: </label>
                 <input
                     type="password"
-                    onChange={(event) => handleSignUpData(event) }
+                    required
+                    onChange={(event) => handleSignUpData(event)}
                 />
 
                 <button>Cadastrar-se</button>
