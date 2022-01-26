@@ -21,9 +21,8 @@ async function CreateUser(req, res) {
     try {
         await yupCreateUser.validate(req.body);
 
-        email = email.toLowerString();
+        email = email.toLowerCase();
         const existingEmail = await findEmail(email);
-
         if (existingEmail) return res.status(400).json({
             message: 'Email já em uso por outro usuário.'
         });
@@ -68,7 +67,7 @@ async function EditUser(req, res) {
     try {
         await yupEditUser.validate(req.body);
 
-        email = email.toLowerString();
+        email = email.toLowerCase();
         const user = await knex('usuarios')
             .where({ id })
             .first();
@@ -147,7 +146,7 @@ async function UserLogin(req, res) {
     try {
         await yupUserLogin.validate(req.body);
 
-        email = email.toLowerString();
+        email = email.toLowerCase();
         const user = await findEmail(email);
         if (!user) return res.status(404).json({
             message: 'Email ou senha não conferem.'
