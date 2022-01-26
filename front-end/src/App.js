@@ -1,13 +1,20 @@
 import './App.css';
-import SignUpForm from './components/signUpForm';
+import SignUp from './pages/signUp';
+import {
+    Route,
+    Routes,
+    BrowserRouter as Router
+} from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <SignUpForm />
-      
+      <Router>
+        <Routes>
+          <Route path='/signup' exact element={<SignUp />}/>
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
-export default App;
