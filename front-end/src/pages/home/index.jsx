@@ -1,16 +1,29 @@
 import useGlobal from '../../hooks/useGlobal';
 import HomeHeader from '../../components/homeHeader';
 import ModalMDemand from '../../components/modalMDemand';
-import './styles.css';
 import { useNavigate } from 'react-router-dom';
+import { UserProfile } from '../../apiCalls/index';
+import './styles.css';
+
 
 export default function Home() {
 
-    const {useEffect, token} = useGlobal();
+    const {
+        useEffect, token,
+        userData, setUserData
+    } = useGlobal();
+
     const navigate = useNavigate();
 
-    useEffect(() => {
+
+    async function UserProfileApiCall() {
         if (!token) return navigate('/');
+        const { user } = await UserProfile(token);
+        setUserData(user);
+    };
+
+    useEffect(() => {
+        UserProfileApiCall();
     }, []);
 
 
@@ -18,7 +31,7 @@ export default function Home() {
     return (
         <div className="home-container">
             <HomeHeader />
-            <ModalMDemand/>
+            <ModalMDemand userData={userData}/>
         </div>
     )
 }

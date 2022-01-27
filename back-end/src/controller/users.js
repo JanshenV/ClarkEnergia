@@ -172,7 +172,7 @@ async function UserLogin(req, res) {
 
 async function UserProfile(req, res) {
     const user = req.user;
-    return res.status(200).json(user);
+    return res.status(200).json({ user });
 };
 
 async function ListOfUsers(req, res) {

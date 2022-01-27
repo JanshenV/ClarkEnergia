@@ -45,14 +45,14 @@ async function UserProfile(token) {
             method: 'GET',
             headers: {
                 'Content-Type': 'Application/json',
-                'Authorization': token
+                'authorization': token
             }
         };
 
-        const serverRequest = await fetch(`${BASE_URL}/users/login`, requestOptions);
-        const serverResponse = await serverRequest.json();
+        const serverRequest = await fetch(`${BASE_URL}/users/profile`, requestOptions);
+        const { user } = await serverRequest.json();
 
-        return console.log(serverResponse);
+        return { user };
     } catch ({ message }) {
         return message;
     };
@@ -60,5 +60,6 @@ async function UserProfile(token) {
 
 module.exports = {
     UserSignUp,
-    UserLogin
+    UserLogin,
+    UserProfile
 }
