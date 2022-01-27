@@ -15,7 +15,6 @@ export default function Home() {
 
     const navigate = useNavigate();
 
-
     async function UserProfileApiCall() {
         if (!token) return navigate('/');
         const { user } = await UserProfile(token);
@@ -26,12 +25,12 @@ export default function Home() {
         UserProfileApiCall();
     }, []);
 
-
+    const { energia_mensal } = userData;
 
     return (
         <div className="home-container">
             <HomeHeader />
-            <ModalMDemand userData={userData}/>
+            {!energia_mensal && <ModalMDemand userData={userData}/>}
         </div>
     )
 }

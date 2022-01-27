@@ -58,8 +58,29 @@ async function UserProfile(token) {
     };
 };
 
+async function UserEdit(token, data) {
+    try {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/json',
+                'authorization': token
+            },
+            body: JSON.stringify(data)
+        };
+
+        const serverRequest = await fetch(`${BASE_URL}/users`, requestOptions);
+        const { message } = await serverRequest.json();
+
+        return { message };
+    } catch ({ message }) {
+        return message;
+    };
+};
+
 module.exports = {
     UserSignUp,
     UserLogin,
-    UserProfile
+    UserProfile,
+    UserEdit
 }
