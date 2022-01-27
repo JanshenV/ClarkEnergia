@@ -39,6 +39,25 @@ async function UserLogin(userData) {
     };
 };
 
+async function UserProfile(token) {
+    try {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'Application/json',
+                'Authorization': token
+            }
+        };
+
+        const serverRequest = await fetch(`${BASE_URL}/users/login`, requestOptions);
+        const serverResponse = await serverRequest.json();
+
+        return console.log(serverResponse);
+    } catch ({ message }) {
+        return message;
+    };
+};
+
 module.exports = {
     UserSignUp,
     UserLogin
