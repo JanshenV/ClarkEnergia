@@ -1,13 +1,12 @@
 import useGlobal from '../../hooks/useGlobal';
 import HomeHeader from '../../components/homeHeader';
+import ModalMDemand from '../../components/modalMDemand';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
 
-    const {
-         useEffect, token
-    } = useGlobal();
+    const {useEffect, token} = useGlobal();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,11 +15,10 @@ export default function Home() {
 
 
 
-
-
     return (
         <div className="home-container">
-            <HomeHeader/>
+            <HomeHeader />
+            <ModalMDemand/>
         </div>
     )
 }
