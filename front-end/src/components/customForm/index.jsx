@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import  ModalSucess  from '../modalSucess';
 
 import './styles.css'
 
@@ -17,6 +18,8 @@ export default function CustomForm({
         email: '',
         senha: ''
     });
+
+    const [modalSucessUp, setModalSucessUp] = useState(false);
 
     const navigate = useNavigate();
 
@@ -49,7 +52,6 @@ export default function CustomForm({
         });
     };
 
-
     async function handleSubmit(event) {
         event.preventDefault();
 
@@ -65,7 +67,8 @@ export default function CustomForm({
         if (title === 'Cadastro') {
             if (!message.includes('Cadastro')) return setError({ message });
             clearFormValues();
-            navigate('/');
+            setModalSucessUp(true);
+            // navigate('/');
         };
     };   
 
@@ -126,6 +129,11 @@ export default function CustomForm({
                     </button>
                 </p>
             </div>
+            {modalSucessUp &&
+                <ModalSucess
+                    setModalSucessUp={setModalSucessUp}
+                />
+            }
         </div>
     );
 };

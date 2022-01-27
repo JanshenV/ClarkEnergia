@@ -1,6 +1,5 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-
 async function UserSignUp(userData) {
     try {
         const requestOptions = {
