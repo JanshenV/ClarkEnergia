@@ -2,11 +2,11 @@ import useGlobal from '../../hooks/useGlobal';
 import { UserEdit } from '../../apiCalls';
 import './styles.css';
 
-export default function ModalMDemand({userData}) {
+export default function ModalMDemand() {
 
     const {
         useEffect, useState,
-        token,
+        token, userData,
         error, setError
     } = useGlobal();
 

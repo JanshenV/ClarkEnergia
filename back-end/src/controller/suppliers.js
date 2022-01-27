@@ -58,4 +58,4 @@ async function SuppliersList(req, res) {
 module.exports = {
     CreateSupplier,
     SuppliersList
-}
+};

@@ -1,0 +1,8 @@
+.searchBar-container input {
+    width: 300px;
+    height: 60px;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

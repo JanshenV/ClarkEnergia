@@ -78,9 +78,29 @@ async function UserEdit(token, data) {
     };
 };
 
+async function SuppliersList(token) {
+    try {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'Application/json',
+                'authorization': token
+            }
+        };
+
+        const serverRequest = await fetch(`${BASE_URL}/suppliers`, requestOptions);
+        const serverResponse = await serverRequest.json();
+
+        return { serverResponse };
+    } catch ({ message }) {
+        return message;
+    };
+};
+
 module.exports = {
     UserSignUp,
     UserLogin,
     UserProfile,
-    UserEdit
-}
+    UserEdit,
+    SuppliersList
+};

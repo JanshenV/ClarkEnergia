@@ -4,7 +4,7 @@ create database clarkedb;
 create table fornecedores(
     id serial primary key,
     nome text not null unique,
-    logo bytea not null unique,
+    logo text not null unique,
     estado_origem text not null,
     preco_kwh real not null,
     min_kwh real not null,
