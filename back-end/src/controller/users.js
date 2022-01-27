@@ -53,7 +53,8 @@ async function EditUser(req, res) {
     let {
         nome,
         email,
-        senha
+        senha,
+        energia_mensal
     } = req.body;
     const { id } = req.user;
 
@@ -67,12 +68,12 @@ async function EditUser(req, res) {
     try {
         await yupEditUser.validate(req.body);
 
-        email = email.toLowerCase();
         const user = await knex('usuarios')
             .where({ id })
             .first();
 
         if (email && email !== user.email) {
+            email = email.toLowerCase();
             const existingEmail = await findEmail(email);
             if (existingEmail) return res.status(400).json({
                 message: 'Email já em uso por outro usuário.'
@@ -87,7 +88,8 @@ async function EditUser(req, res) {
         const newUserData = {
             nome: nome ? nome : user.nome,
             email: email ? email : user.email,
-            senha: senha ? senha : user.senha
+            senha: senha ? senha : user.senha,
+            energia_mensal: energia_mensal ? Number(energia_mensal) : user.energia_mensal
         };
 
         await knex('usuarios')
