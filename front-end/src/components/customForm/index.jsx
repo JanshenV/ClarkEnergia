@@ -10,6 +10,7 @@ export default function CustomForm({
 
     const {
         useState, navigate,
+        useEffect,
         modalSucessUp, setModalSucessUp,
         error, setError
     } = useGlobal();
@@ -66,7 +67,13 @@ export default function CustomForm({
             clearFormValues();
             setModalSucessUp(true);
         };
-    };   
+    };  
+    
+    useEffect(() => {
+        setError({
+            message: ''
+        });
+    },[]);
 
     return (
         <div className='customForm-container'>
