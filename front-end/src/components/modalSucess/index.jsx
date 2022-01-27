@@ -1,8 +1,8 @@
 import './styles.css';
-import { useNavigate } from 'react-router-dom';
+import useGlobal from '../../hooks/useGlobal';
 
-export default function ModalSucess({ setModalSucessUp }) {
-    const navigate = useNavigate();
+export default function ModalSucess() {
+    const { setModalSucessUp, navigate } = useGlobal();
 
     function closeModal() {
         setModalSucessUp(false);
@@ -10,7 +10,7 @@ export default function ModalSucess({ setModalSucessUp }) {
     };
 
     setTimeout(() => {
-        closeModal()
+        closeModal();
     }, 5000);
 
     return (

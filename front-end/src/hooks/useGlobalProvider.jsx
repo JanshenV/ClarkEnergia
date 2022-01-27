@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function useGlobalProvider() {
-    const [hello, setHello] = useState('Welcome Home');
+    const [modalSucessUp, setModalSucessUp] = useState(false);
+
+     const [error, setError] = useState({
+        message: ''
+     });
+    
+    const navigate = useNavigate();
 
     return {
         useState, useEffect,
-        hello
+        navigate,
+        modalSucessUp, setModalSucessUp,
+        error, setError,
     };
 };

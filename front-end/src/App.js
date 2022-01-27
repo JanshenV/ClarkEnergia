@@ -10,15 +10,15 @@ import {
 
 export default function App() {
   return (
-    <GlobalProvider>
-      <Router>
+    <Router>
+      <GlobalProvider>
         <Routes>
           <Route path='/signup' exact element={<SignUp />} />
           <Route path='/' exact element={<Login />} />
           <Route path='/home' exact element={<Home />} />
         </Routes>
-      </Router>
-    </GlobalProvider>
+      </GlobalProvider>
+    </Router>
   );
 };
 

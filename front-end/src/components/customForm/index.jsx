@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import useGlobal from '../../hooks/useGlobal';
 import  ModalSucess  from '../modalSucess';
 
 import './styles.css'
@@ -9,19 +8,17 @@ export default function CustomForm({
     apiCall
 }) {    
 
-    const [error, setError] = useState({
-        message: ''
-    });
+    const {
+        useState, navigate,
+        modalSucessUp, setModalSucessUp,
+        error, setError
+    } = useGlobal();
 
     const [formValues, setFormValues] = useState({
         nome: title === "Login" ? '' : null,
         email: '',
         senha: ''
     });
-
-    const [modalSucessUp, setModalSucessUp] = useState(false);
-
-    const navigate = useNavigate();
 
     function handleValues(event) {
         const itemType = event.target.type;
@@ -68,7 +65,6 @@ export default function CustomForm({
             if (!message.includes('Cadastro')) return setError({ message });
             clearFormValues();
             setModalSucessUp(true);
-            // navigate('/');
         };
     };   
 
@@ -129,11 +125,7 @@ export default function CustomForm({
                     </button>
                 </p>
             </div>
-            {modalSucessUp &&
-                <ModalSucess
-                    setModalSucessUp={setModalSucessUp}
-                />
-            }
+            {modalSucessUp && <ModalSucess/>}
         </div>
     );
 };
