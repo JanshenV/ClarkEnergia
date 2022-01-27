@@ -4,13 +4,13 @@
     justify-content: space-evenly;
     height: 20vh;
     width: 100vw;
-    border: solid rgb(75, 85, 223) 5px;
-    background: rgb(188, 141, 226);
+    border: solid rgb(171, 209, 168) 3px;
+    background: rgb(59, 204, 214);
     border-radius: 30px;
 }
 
 .homeHeader-container h1 {
-    color: rgb(4, 255, 45);
+    color: rgb(118, 250, 106);
     padding: 20px;
 }
 
