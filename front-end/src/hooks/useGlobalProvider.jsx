@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 export default function useGlobalProvider() {
     const [modalSucessUp, setModalSucessUp] = useState(false);
 
@@ -8,11 +9,13 @@ export default function useGlobalProvider() {
         message: ''
      });
     
+    const token = localStorage.getItem('token');
+    
     const navigate = useNavigate();
 
     return {
         useState, useEffect,
-        navigate,
+        navigate, token,
         modalSucessUp, setModalSucessUp,
         error, setError,
     };
