@@ -12,20 +12,24 @@ export default function TableLines({
         <div
             className='tableLine-container'
         >
-            <img
-                src={logo}
-                alt="logo"
-            />
+            <div className='logo'>
+                <img
+                    src={logo}
+                    alt="logo"
+                />
+            </div>
 
-            <p>{fornecedor}</p>
-            <p>Estado: {estado_origem}</p>
-            <p>Preço por kWh: R$: {preco_kwh}</p>
-            <p>Avaliação: {avaliacao_media}</p>
-            <p>Limite mínimo: {min_kwh} kWh </p>
+            <div className='supplierInfo'>
+                <p>{fornecedor}</p>
+                <p>Estado: {estado_origem}</p>
+                <p>Preço por kWh: R$: {preco_kwh}</p>
+                <p>Avaliação: {avaliacao_media}</p>
+                <p>Limite mínimo: {min_kwh} kWh </p>
 
-            <CustomButton
-                buttonText={buttonText}
-            />
+                <CustomButton
+                    buttonText={buttonText}
+                />
+            </div>
         </div>
     );
 }

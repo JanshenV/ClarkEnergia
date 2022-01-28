@@ -1,20 +1,25 @@
 .tableLine-container {
     background: rgb(19, 202, 74);
-    width: 400px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 20px 0 20px 0;
     border-radius: 20px;
     border-bottom: 15px solid rgba(14, 55, 58, 0.253);
 }
 
-.tableLine-container img {
-    margin-top: 10px;
-    width: 40px;
+.supplierInfo {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.tableLine-container p {
+.logo img {
+    width: 160px;
+}
+
+.supplierInfo p {
     padding: 5px;
 }
