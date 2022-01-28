@@ -6,7 +6,7 @@ function TableLines({
     logo,
     fornecedor, estado_origem,
     preco_kwh, avaliacao_media,
-    buttonText
+    buttonText, min_kwh
 }) {
     return (
         <div className='tableLine-container'>
@@ -16,9 +16,10 @@ function TableLines({
             />
 
             <p>{fornecedor}</p>
-            <p>Origem: {estado_origem}</p>
-            <p>Preço por kWh: {preco_kwh}</p>
+            <p>Estado: {estado_origem}</p>
+            <p>Preço por kWh: R$: {preco_kwh}</p>
             <p>Avaliação: {avaliacao_media}</p>
+            <p>Limite mínimo: {min_kwh} kWh </p>
 
             <CustomButton
                 buttonText={buttonText}
@@ -27,12 +28,9 @@ function TableLines({
     );
 };
 
-
-
-export default function CustomTable() {
-
-    const { suppliersList } = useGlobal();
-
+export default function CustomTable({
+    suppliersList}) {
+    
 
     return (
         <div className='customTable-container'>
@@ -45,6 +43,7 @@ export default function CustomTable() {
                         estado_origem={supplier.estado_origem}
                         preco_kwh={supplier.preco_kwh}
                         avaliacao_media={supplier.avaliacao_media}
+                        min_kwh={supplier.min_kwh}
                         buttonText='Contratar'
                     />
                 )

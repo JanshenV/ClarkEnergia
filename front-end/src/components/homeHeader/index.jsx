@@ -6,7 +6,10 @@ import useGlobal from '../../hooks/useGlobal';
 
 export default function HomeHeader() {
     
-    const { useState, navigate } = useGlobal();
+    const {
+        useState, navigate,
+        userData
+    } = useGlobal();
     const [tinyModalUp, setTinyModalUp] = useState(true);
 
     function handleTinyModal() {
@@ -26,7 +29,7 @@ export default function HomeHeader() {
             <div className='userInfo-edit-logout'>
 
                 <div className='username-arrow'>
-                    <p>Olá Usereeeeeeeeeeeeeeee</p>
+                    <p>Olá {userData.nome}</p>
                     <img
                         onClick={() => handleTinyModal()}
                         src={ArrowDownIcon}

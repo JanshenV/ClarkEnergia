@@ -5,15 +5,15 @@ import './styles.css';
 export default function ModalMDemand() {
 
     const {
-        useEffect, useState,
+        useState,
         token, userData,
-        error, setError
+        error, setError,
+        modalDemandUp, setModalDemandUp,
     } = useGlobal();
 
     const [demand, setDemand] = useState({
         energia_mensal: 0
     });
-    const { nome } = userData;
 
     function handleDemandValue(event) {
         const demandValue = event.target.value;
@@ -36,13 +36,14 @@ export default function ModalMDemand() {
             message
         });
 
-        return window.location.reload(true);
+        return setModalDemandUp(!modalDemandUp);
     };
-
+    
     return (
-        <div className='mdemand-backdrop'>
+        <div
+            className={`mdemand-backdrop ${modalDemandUp ? '' : 'hidden'}`}>
             <div className="mdemand-modal">
-                <h1>Olá {nome}!</h1>
+                <h1>Olá {userData.nome}!</h1>
 
                 {error.message ? 
                     <p className='error'>{error.message}</p> :

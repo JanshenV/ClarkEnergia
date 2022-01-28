@@ -1,5 +1,6 @@
 import useGlobal from '../../hooks/useGlobal';
-import  ModalSucess  from '../modalSucess';
+import ModalSucess from '../modalSucess';
+import CustomButton from '../customButton';
 
 import './styles.css'
 
@@ -116,7 +117,8 @@ export default function CustomForm({
                     onChange={(event) => handleValues(event)}
                 />
 
-                <button>{buttonText}</button>
+                <CustomButton buttonText={buttonText}/>
+                
             </form>
 
             <div className='signup-login-container'>
