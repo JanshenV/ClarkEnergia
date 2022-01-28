@@ -1,15 +1,12 @@
 import './styles.css';
-import EditIcon from '../../assets/editIcon.png';
-import LogoutIcon from '../../assets/logoutIcon.svg';
-import ArrowDownIcon from '../../assets/arrowDownIcon.png';
-import useGlobal from '../../hooks/useGlobal';
+import EditIcon from '../../../assets/editIcon.png';
+import LogoutIcon from '../../../assets/logoutIcon.svg';
+import ArrowDownIcon from '../../../assets/arrowDownIcon.png';
+import useGlobal from '../../../hooks/useGlobal';
 
 export default function HomeHeader() {
     
-    const {
-        useState, navigate,
-        userData
-    } = useGlobal();
+    const {useState, navigate, userData} = useGlobal();
     const [tinyModalUp, setTinyModalUp] = useState(true);
 
     function handleTinyModal() {
@@ -19,7 +16,8 @@ export default function HomeHeader() {
     function handleLogout() {
         localStorage.removeItem('token');
         setTinyModalUp(true);
-        navigate('/');
+        return navigate('/');
+         
     };
 
 

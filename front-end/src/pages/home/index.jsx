@@ -1,7 +1,7 @@
 import useGlobal from '../../hooks/useGlobal';
-import HomeHeader from '../../components/homeHeader';
-import ModalMDemand from '../../components/modalMDemand';
-import HomeBody from '../../components/homeBody';
+import HomeHeader from '../../components/homeComponents/homeHeader';
+import ModalMDemand from '../../components/modals/modalMDemand';
+import HomeBody from '../../components/homeComponents/homeBody';
 
 import { useNavigate } from 'react-router-dom';
 import {
@@ -10,46 +10,39 @@ import {
 } from '../../apiCalls/index';
 import './styles.css';
 
-
 export default function Home() {
     const {
         useEffect, token,
-        userData, setUserData,
         modalDemandUp, setModalDemandUp,
-        suppliersList, setSuppliersList
+        setUserData,
+        setSuppliersList,
+        setLastingSuppliersList
     } = useGlobal();
-
 
     const navigate = useNavigate();
 
-    async function ServidorRequest() {
-        if (!token) return navigate('/');
-
-        if (!userData) {
-            const { user } = await UserProfile(token);
-            await setUserData(user);
-        };
-     
-        if (!suppliersList) {
-            const { serverResponse } = await SuppliersList(token);
-            await setSuppliersList(serverResponse);
-        };
-       
-        if (userData.energia_mensal) {
-            setModalDemandUp(false);
-        };
-    };
-
     useEffect(() => {
+        async function ServidorRequest() {
+            if (!token) return navigate('/');
+            
+            const {user} = await UserProfile(token);
+            await setUserData(user);
+        
+            const {serverResponse} = await SuppliersList(token);
+            await setSuppliersList(serverResponse);
+            setLastingSuppliersList(serverResponse);
+
+            if (user.energia_mensal) return  setModalDemandUp(false);
+        };
         ServidorRequest();
-    }, [modalDemandUp]);
+    }, [token]);
 
 
     return (
         <div className="home-container">
             <HomeHeader />
             <HomeBody/>
-            <ModalMDemand/>
+            {modalDemandUp && <ModalMDemand/>}
         </div>
     );
 }

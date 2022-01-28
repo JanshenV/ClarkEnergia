@@ -1,5 +1,5 @@
 import useGlobal from '../../hooks/useGlobal';
-import ModalSucess from '../modalSucess';
+import ModalSucess from '../modals/modalSucess';
 import CustomButton from '../customButton';
 
 import './styles.css'

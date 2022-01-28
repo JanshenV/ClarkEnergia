@@ -70,9 +70,14 @@ async function UserEdit(token, data) {
         };
 
         const serverRequest = await fetch(`${BASE_URL}/users`, requestOptions);
-        const { message } = await serverRequest.json();
+        const { message, user } = await serverRequest.json();
 
-        return { message };
+        if (message) {
+            console.log('Error in UserEdit', message);
+            return { message };
+        };
+
+        return { user };
     } catch ({ message }) {
         return message;
     };
@@ -90,6 +95,11 @@ async function SuppliersList(token) {
 
         const serverRequest = await fetch(`${BASE_URL}/suppliers`, requestOptions);
         const serverResponse = await serverRequest.json();
+
+        if (serverRequest.status !== 200) {
+            console.log('Error in suppliersList');
+            return [];
+        };
 
         return { serverResponse };
     } catch ({ message }) {

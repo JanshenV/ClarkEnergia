@@ -1,0 +1,8 @@
+.customTable-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(14, 55, 58, 0.253);
+    border-radius: 20px;
+}

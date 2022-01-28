@@ -1,15 +1,18 @@
-import useGlobal from '../../hooks/useGlobal';
-import { UserEdit } from '../../apiCalls';
+import useGlobal from '../../../hooks/useGlobal';
+import { UserEdit } from '../../../apiCalls';
 import './styles.css';
 
 export default function ModalMDemand() {
 
     const {
-        useState,
-        token, userData,
+        useState, token,
+        userData, suppliersList,
+        setSuppliersList, setUserData,
         error, setError,
-        modalDemandUp, setModalDemandUp,
+        setModalDemandUp,
     } = useGlobal();
+
+    const { nome } = userData;
 
     const [demand, setDemand] = useState({
         energia_mensal: 0
@@ -30,20 +33,23 @@ export default function ModalMDemand() {
         if (demand.energia_mensal < 1) return setError({
             message: 'Demanda mensal de energia há de ser maior que zero.'
         });
-        const { message } = await UserEdit(token, demand);
+        const { message, user } = await UserEdit(token, demand);
   
-        if (!message.includes('sucesso')) return setError({
+        if (message) return setError({
             message
         });
 
-        return setModalDemandUp(!modalDemandUp);
+        const filteredList = suppliersList.filter(supplier => supplier.min_kwh <= user.energia_mensal);
+        await setUserData(user);
+        await setSuppliersList(filteredList);
+        
+        return setModalDemandUp(false);
     };
     
     return (
-        <div
-            className={`mdemand-backdrop ${modalDemandUp ? '' : 'hidden'}`}>
+        <div className='mdemand-backdrop'>
             <div className="mdemand-modal">
-                <h1>Olá {userData.nome}!</h1>
+                <h1>Olá {nome}!</h1>
 
                 {error.message ? 
                     <p className='error'>{error.message}</p> :

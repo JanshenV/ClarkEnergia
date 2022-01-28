@@ -16,6 +16,8 @@ export default function useGlobalProvider() {
     const [userData, setUserData] = useState({});
     const [suppliersList, setSuppliersList] = useState([]);
     const [lastingSuppliersList, setLastingSuppliersList] = useState([]);
+
+    const currentUrl = window.location.href;
     
     
     const navigate = useNavigate();
@@ -31,5 +33,7 @@ export default function useGlobalProvider() {
         modalSucessUp, setModalSucessUp,
         modalDemandUp, setModalDemandUp,
         error, setError,
+
+        currentUrl
     };
 };

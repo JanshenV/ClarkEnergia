@@ -68,7 +68,7 @@ async function EditUser(req, res) {
     try {
         await yupEditUser.validate(req.body);
 
-        const user = await knex('usuarios')
+        let user = await knex('usuarios')
             .where({ id })
             .first();
 
@@ -92,12 +92,13 @@ async function EditUser(req, res) {
             energia_mensal: energia_mensal ? Number(energia_mensal) : user.energia_mensal
         };
 
-        await knex('usuarios')
+        user = await knex('usuarios')
             .where({ id })
-            .update(newUserData);
+            .update(newUserData)
+            .returning('*');
 
         return res.status(200).json({
-            message: 'Usuário editado com sucesso.'
+            user: user[0]
         });
 
     } catch ({ message }) {
