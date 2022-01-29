@@ -39,7 +39,7 @@ export default function ModalMDemand() {
             message
         });
 
-        const filteredList = suppliersList.filter(supplier => supplier.min_kwh <= user.energia_mensal);
+        const filteredList = suppliersList.filter(supplier => supplier.min_kwh < user.energia_mensal);
         await setUserData(user);
         await setSuppliersList(filteredList);
         

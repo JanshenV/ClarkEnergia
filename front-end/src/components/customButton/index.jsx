@@ -1,9 +1,7 @@
 import './styles.css';
 
 
-export default function CustomButton({
-    buttonText, buttonFunction
-}) {
+export default function CustomButton({buttonText}) {
     return (
         <button
             className='customButton'

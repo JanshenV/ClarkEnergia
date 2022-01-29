@@ -18,6 +18,7 @@ export default function useGlobalProvider() {
     const [lastingSuppliersList, setLastingSuppliersList] = useState([]);
 
     const currentUrl = window.location.href;
+
     
     
     const navigate = useNavigate();

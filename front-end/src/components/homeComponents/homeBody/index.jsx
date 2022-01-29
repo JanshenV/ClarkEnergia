@@ -24,7 +24,8 @@ export default function HomeBody() {
         });
 
         return setSuppliersList(searchSupplier);
-    }
+    };
+
 
 
     return (

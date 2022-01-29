@@ -1,13 +1,18 @@
 import './styles.css';
-import CustomButton from '../../customButton';
+import CustomTableButton from '../customTableButton';
+
 
 
 export default function TableLines({
-    logo,
-    fornecedor, estado_origem,
-    preco_kwh, avaliacao_media,
-    buttonText, min_kwh
-}) {
+    supplier, user }) {
+
+    const {
+        logo, nome, estado_origem,
+        preco_kwh, avaliacao_media, min_kwh
+    } = supplier;
+
+
+
     return (
         <div
             className='tableLine-container'
@@ -20,15 +25,20 @@ export default function TableLines({
             </div>
 
             <div className='supplierInfo'>
-                <p>{fornecedor}</p>
+                <p>{nome}</p>
                 <p>Estado: {estado_origem}</p>
                 <p>Preço por kWh: R$: {preco_kwh}</p>
                 <p>Avaliação: {avaliacao_media}</p>
                 <p>Limite mínimo: {min_kwh} kWh </p>
+                
+                {(supplier.id !== user.fornecedor_id) && <CustomTableButton
+                    className='contratar'
+                    buttonText='Contratar'
+                    supplierData={supplier}
+                    userData={user}
+                />}
 
-                <CustomButton
-                    buttonText={buttonText}
-                />
+                
             </div>
         </div>
     );

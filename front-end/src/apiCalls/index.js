@@ -73,7 +73,7 @@ async function UserEdit(token, data) {
         const { message, user } = await serverRequest.json();
 
         if (message) {
-            console.log('Error in UserEdit', message);
+            console.log(message);
             return { message };
         };
 

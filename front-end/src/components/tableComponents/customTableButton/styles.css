@@ -1,0 +1,14 @@
+.hire {
+    margin: 20px 0 20px 0;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgb(2, 167, 2);
+    cursor: pointer;
+    color: white;
+}
+
+.hire:hover {
+    background: white;
+    color: rgb(2, 167, 2);
+}

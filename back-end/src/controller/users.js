@@ -54,7 +54,8 @@ async function EditUser(req, res) {
         nome,
         email,
         senha,
-        energia_mensal
+        energia_mensal,
+        fornecedor_id
     } = req.body;
     const { id } = req.user;
 
@@ -67,7 +68,6 @@ async function EditUser(req, res) {
 
     try {
         await yupEditUser.validate(req.body);
-
         let user = await knex('usuarios')
             .where({ id })
             .first();
@@ -89,13 +89,15 @@ async function EditUser(req, res) {
             nome: nome ? nome : user.nome,
             email: email ? email : user.email,
             senha: senha ? senha : user.senha,
-            energia_mensal: energia_mensal ? Number(energia_mensal) : user.energia_mensal
+            energia_mensal: energia_mensal ? Number(energia_mensal) : user.energia_mensal,
+            fornecedor_id: fornecedor_id ? fornecedor_id : user.fornecedor_id
         };
 
         user = await knex('usuarios')
             .where({ id })
             .update(newUserData)
             .returning('*');
+
 
         return res.status(200).json({
             user: user[0]
