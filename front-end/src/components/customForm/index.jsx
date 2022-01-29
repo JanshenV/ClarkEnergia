@@ -86,7 +86,7 @@ export default function CustomForm({
                     {title}
                 </h1>
 
-                {error &&
+                {error.message &&
                     <p className="error">
                         {error.message}
                     </p>

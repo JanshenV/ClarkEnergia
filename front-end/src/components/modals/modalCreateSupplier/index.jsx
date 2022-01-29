@@ -80,7 +80,7 @@ export default function ModalCreateSupplier() {
         <div className='createSupplier-backdrop'>
             <div className="createSupplier-container">
 
-                {error.message && <p className='error'>{error.message}</p>}
+                {error.message && <p className='createSupplier-error'>{error.message}</p>}
                 <form
                     onSubmit={(event) => handleSubmit(event)}
                     className="createSupplier-form">

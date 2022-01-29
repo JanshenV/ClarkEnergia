@@ -32,6 +32,8 @@ async function CreateSupplier(req, res) {
             message: 'Logo já está sendo utilizado por outro fornecedor.'
         });
 
+        
+
         await knex('fornecedores')
             .insert(req.body);
 
