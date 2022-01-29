@@ -38,13 +38,6 @@ export default function HomeHeader() {
                 <div
                     className={`tinyModal
                      ${tinyModalUp ? 'hidden' : ''}`}>
-                    
-                    <div className="icon">
-                        <img
-                            src={EditIcon}
-                            alt="Edit user"
-                        />
-                    </div>
 
                     <div className="icon">
                         <img

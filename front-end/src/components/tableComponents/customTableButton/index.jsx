@@ -15,14 +15,13 @@ export default function CustomTableButton({
     } = useGlobal();
 
     async function handleSubmit(id) {
-        const { message, user } = await UserEdit(token, { fornecedor_id: id });
+        const {  user } = await UserEdit(token, { fornecedor_id: id });
         await SuppliersList(token);
         const { supplier } = await SingleSupplier(token);
         await setMySupplier(supplier);
         await setUserData(user);
         window.location.reload(true);
     };
-
 
     return (
         <button
