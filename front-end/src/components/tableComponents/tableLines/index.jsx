@@ -11,8 +11,6 @@ export default function TableLines({
         preco_kwh, avaliacao_media, min_kwh
     } = supplier;
 
-
-
     return (
         <div
             className='tableLine-container'
@@ -37,8 +35,6 @@ export default function TableLines({
                     supplierData={supplier}
                     userData={user}
                 />}
-
-                
             </div>
         </div>
     );

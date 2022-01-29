@@ -2,12 +2,15 @@ import './styles.css';
 import CustomSearchBar from '../../customSearchBar';
 import CustomTable from '../../tableComponents/customTable';
 import useGlobal from '../../../hooks/useGlobal';
+import CustomButton from '../../customButton';
+import MySupplier from '../../modals/modalMySupplier'
 
 export default function HomeBody() {
 
     const {
         setSuppliersList,
-        lastingSuppliersList
+        lastingSuppliersList,
+        mySupplierModalUp, setMySupplierModalUp
     } = useGlobal();
 
     async function searchSuppliers(event) {
@@ -26,16 +29,27 @@ export default function HomeBody() {
         return setSuppliersList(searchSupplier);
     };
 
+    async function mySupplier() {
+        setMySupplierModalUp(true);
+    };
 
 
     return (
         <div className="homeBody-container">
-            <CustomSearchBar
-                placeholder='Procure fornecedores'
-                searchFunction={searchSuppliers}
-            />
+            <div className='topBody'>
+                <CustomSearchBar
+                    placeholder='Procure fornecedores'
+                    searchFunction={searchSuppliers}
+                />
+                <CustomButton
+                    buttonText='Meu contrato'
+                    buttonFunction={mySupplier}
+                />
+            </div>
+            
+            {mySupplierModalUp && <MySupplier/>}
 
-            <CustomTable/>
+            <CustomTable />
         </div>
     );
 };

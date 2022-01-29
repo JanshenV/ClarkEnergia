@@ -6,6 +6,7 @@ import { useLocalStorage } from "react-use";
 export default function useGlobalProvider() {
     const [modalSucessUp, setModalSucessUp] = useState(false);
     const [modalDemandUp, setModalDemandUp] = useState(true);
+    const [mySupplierModalUp, setMySupplierModalUp] = useState(false);
 
      const [error, setError] = useState({
         message: ''
@@ -33,8 +34,9 @@ export default function useGlobalProvider() {
         
         modalSucessUp, setModalSucessUp,
         modalDemandUp, setModalDemandUp,
-        error, setError,
+        mySupplierModalUp, setMySupplierModalUp,
 
+        error, setError,
         currentUrl
     };
 };

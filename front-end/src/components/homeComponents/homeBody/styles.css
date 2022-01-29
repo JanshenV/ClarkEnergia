@@ -5,3 +5,9 @@
     width: 80vw;
     position: relative;
 }
+
+.topBody {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

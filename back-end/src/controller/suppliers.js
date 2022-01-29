@@ -55,7 +55,28 @@ async function SuppliersList(req, res) {
     };
 };
 
+async function SingleSupplier(req, res) {
+    const { fornecedor_id } = req.user;
+
+    try {
+        const supplier = await knex('fornecedores')
+            .where({ id: fornecedor_id })
+            .first();
+
+        if (!supplier) return res.status(404).json({
+            message: 'Fornecedor não encontrado.'
+        });
+
+        return res.status(200).json({ supplier });
+    } catch ({ message }) {
+        return res.status(400).json({
+            message
+        });
+    };
+};
+
 module.exports = {
     CreateSupplier,
-    SuppliersList
+    SuppliersList,
+    SingleSupplier
 };

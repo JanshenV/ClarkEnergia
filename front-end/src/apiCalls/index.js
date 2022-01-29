@@ -107,10 +107,34 @@ async function SuppliersList(token) {
     };
 };
 
+async function SingleSupplier(token) {
+    try {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'Application/json',
+                'authorization': token
+            }
+        };
+
+        const serverRequest = await fetch(`${BASE_URL}/suppliers/mysupplier`, requestOptions);
+        const { message, supplier } = await serverRequest.json();
+
+        if (serverRequest.status !== 200) {
+            return console.log(message);
+        };
+
+        return { supplier };
+    } catch ({ message }) {
+        return message;
+    };
+}
+
 module.exports = {
     UserSignUp,
     UserLogin,
     UserProfile,
     UserEdit,
-    SuppliersList
+    SuppliersList,
+    SingleSupplier
 };

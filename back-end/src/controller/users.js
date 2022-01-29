@@ -85,19 +85,19 @@ async function EditUser(req, res) {
             senha = encryptPassword;
         };
 
+
         const newUserData = {
             nome: nome ? nome : user.nome,
             email: email ? email : user.email,
             senha: senha ? senha : user.senha,
             energia_mensal: energia_mensal ? Number(energia_mensal) : user.energia_mensal,
-            fornecedor_id: fornecedor_id ? fornecedor_id : user.fornecedor_id
+            fornecedor_id
         };
 
         user = await knex('usuarios')
             .where({ id })
             .update(newUserData)
             .returning('*');
-
 
         return res.status(200).json({
             user: user[0]
