@@ -130,11 +130,32 @@ async function SingleSupplier(token) {
     };
 };
 
+async function CreateSupplier(token, data) {
+    try {
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json',
+                'authorization': token
+            },
+            body: JSON.stringify(data)
+        };
+
+        const serverRequest = await fetch(`${BASE_URL}/suppliers`, requestOptions);
+        const { message } = await serverRequest.json();
+
+        return { message };
+    } catch ({ message }) {
+        return message;
+    };
+};
+
 module.exports = {
     UserSignUp,
     UserLogin,
     UserProfile,
     UserEdit,
     SuppliersList,
-    SingleSupplier
+    SingleSupplier,
+    CreateSupplier
 };

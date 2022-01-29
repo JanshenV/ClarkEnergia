@@ -5,6 +5,7 @@ export default function useGlobalProvider() {
     const [modalSucessUp, setModalSucessUp] = useState(false);
     const [modalDemandUp, setModalDemandUp] = useState(true);
     const [mySupplierModalUp, setMySupplierModalUp] = useState(false);
+    const [modalCreateSupplierUp, setModalCreateSupplierUp] = useState(false);
 
      const [error, setError] = useState({
         message: ''
@@ -35,6 +36,7 @@ export default function useGlobalProvider() {
         modalSucessUp, setModalSucessUp,
         modalDemandUp, setModalDemandUp,
         mySupplierModalUp, setMySupplierModalUp,
+        modalCreateSupplierUp, setModalCreateSupplierUp,
 
         error, setError,
         currentUrl,

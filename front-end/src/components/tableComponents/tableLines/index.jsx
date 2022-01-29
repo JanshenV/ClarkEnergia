@@ -32,7 +32,9 @@ export default function TableLines({
                 </ul>
                 
                 <div className='tableLine-buttons'>
-                    {(supplier.id !== user.fornecedor_id) && <CustomTableButton
+                    {(supplier.id !== user.fornecedor_id &&
+                        user.nome !== 'Clarke Admin') &&
+                        <CustomTableButton
                         className='contratar'
                         buttonText='Contratar'
                         supplierData={supplier}

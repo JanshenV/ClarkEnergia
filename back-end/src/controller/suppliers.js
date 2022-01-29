@@ -35,7 +35,9 @@ async function CreateSupplier(req, res) {
         await knex('fornecedores')
             .insert(req.body);
 
-        return res.status(201).json();
+        return res.status(201).json({
+            message: 'Sucesso'
+        });
     } catch ({ message }) {
         return res.status(400).json({
             message

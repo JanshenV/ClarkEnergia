@@ -27,7 +27,7 @@ export default function HomeHeader() {
             <div className='userInfo-edit-logout'>
 
                 <div className='username-arrow'>
-                    <p>Olá {userData.nome}</p>
+                    <p>{userData.nome}</p>
                     <img
                         onClick={() => handleTinyModal()}
                         src={ArrowDownIcon}

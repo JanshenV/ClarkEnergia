@@ -30,8 +30,7 @@ export default function Home() {
             const {serverResponse} = await SuppliersList(token);
             await setSuppliersList(serverResponse);
             setLastingSuppliersList(serverResponse);
-
-            if (user.energia_mensal) return setModalDemandUp(false);
+            if (user.energia_mensal || user.nome === 'Clarke Admin') return setModalDemandUp(false);
         };
         ServidorRequest();
     }, [token]);

@@ -5,14 +5,17 @@ import useGlobal from '../../../hooks/useGlobal';
 import CustomButton from '../../customButton';
 import MySupplier from '../../modals/modalMySupplier'
 import ModalMDemand from '../../modals/modalMDemand';
+import ModalCreateSupplier from '../../modals/modalCreateSupplier';
+import { CreateSupplier } from '../../../apiCalls/index';
 
-export default function HomeBody() {
+export default function HomeBody({user}) {
 
     const {
-        setSuppliersList,
-        lastingSuppliersList,
+        setSuppliersList, lastingSuppliersList,
+        userData,
         mySupplierModalUp, setMySupplierModalUp,
-        userData, modalDemandUp
+        modalDemandUp,
+        modalCreateSupplierUp, setModalCreateSupplierUp
     } = useGlobal();
 
     async function searchSuppliers(event) {
@@ -36,10 +39,14 @@ export default function HomeBody() {
         setMySupplierModalUp(true);
     };
 
+    async function insertSupplier() {
+        setModalCreateSupplierUp(true);
+    }
 
     return (
         <div className="homeBody-container">
-            {modalDemandUp && <ModalMDemand/>}
+            {modalDemandUp && <ModalMDemand />}
+            {modalCreateSupplierUp && <ModalCreateSupplier/>}
 
 
             <div className='topBody'>
@@ -47,10 +54,15 @@ export default function HomeBody() {
                     placeholder='Procure fornecedores'
                     searchFunction={searchSuppliers}
                 />
-                <CustomButton
+                {(userData.nome !== 'Clarke Admin') ? 
+                    <CustomButton
                     buttonText='Meu contrato'
-                    buttonFunction={callsMySupplier}
-                />
+                        buttonFunction={callsMySupplier}
+                    /> :
+                    <CustomButton
+                        buttonText='Adiconar Fornecedor'
+                        buttonFunction={insertSupplier}
+                    />}
             </div>
             {mySupplierModalUp && <MySupplier/>}
             <CustomTable />

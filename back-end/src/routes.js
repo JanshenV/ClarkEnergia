@@ -30,8 +30,6 @@ const {
     InitialSuppliers
 } = require('./middleware/initialSuppliers');
 
-
-
 //CRUD 
 routes.use(InitialSuppliers);
 routes.use(CreateAdmin);
