@@ -1,6 +1,5 @@
 import useGlobal from '../../hooks/useGlobal';
 import HomeHeader from '../../components/homeComponents/homeHeader';
-import ModalMDemand from '../../components/modals/modalMDemand';
 import HomeBody from '../../components/homeComponents/homeBody';
 
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +12,7 @@ import './styles.css';
 export default function Home() {
     const {
         useEffect, token,
-        modalDemandUp, setModalDemandUp,
+        setModalDemandUp,
         setUserData,
         setSuppliersList,
         setLastingSuppliersList
@@ -32,7 +31,7 @@ export default function Home() {
             await setSuppliersList(serverResponse);
             setLastingSuppliersList(serverResponse);
 
-            if (user.energia_mensal) return  setModalDemandUp(false);
+            if (user.energia_mensal) return setModalDemandUp(false);
         };
         ServidorRequest();
     }, [token]);
@@ -42,7 +41,6 @@ export default function Home() {
         <div className="home-container">
             <HomeHeader />
             <HomeBody/>
-            {modalDemandUp && <ModalMDemand/>}
         </div>
     );
 }

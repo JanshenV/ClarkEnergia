@@ -19,12 +19,12 @@ export default function useGlobalProvider() {
     const [lastingSuppliersList, setLastingSuppliersList] = useState([]);
 
     const currentUrl = window.location.href;
-
     const navigate = useNavigate();
 
     return {
         useState, useEffect,
         navigate, token,
+
 
         userData, setUserData,
 
@@ -37,6 +37,6 @@ export default function useGlobalProvider() {
         mySupplierModalUp, setMySupplierModalUp,
 
         error, setError,
-        currentUrl
+        currentUrl,
     };
 };

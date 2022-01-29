@@ -16,10 +16,11 @@ export default function CustomTableButton({
 
     async function handleSubmit(id) {
         const { message, user } = await UserEdit(token, { fornecedor_id: id });
-        const { supplier } = await SingleSupplier(token);
         await SuppliersList(token);
-        setMySupplier(supplier);
-        setUserData(user);
+        const { supplier } = await SingleSupplier(token);
+        await setMySupplier(supplier);
+        await setUserData(user);
+        window.location.reload(true);
     };
 
 

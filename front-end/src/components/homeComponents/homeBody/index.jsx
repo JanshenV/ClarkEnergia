@@ -4,6 +4,7 @@ import CustomTable from '../../tableComponents/customTable';
 import useGlobal from '../../../hooks/useGlobal';
 import CustomButton from '../../customButton';
 import MySupplier from '../../modals/modalMySupplier'
+import ModalMDemand from '../../modals/modalMDemand';
 
 export default function HomeBody() {
 
@@ -11,7 +12,7 @@ export default function HomeBody() {
         setSuppliersList,
         lastingSuppliersList,
         mySupplierModalUp, setMySupplierModalUp,
-        userData
+        userData, modalDemandUp
     } = useGlobal();
 
     async function searchSuppliers(event) {
@@ -38,6 +39,9 @@ export default function HomeBody() {
 
     return (
         <div className="homeBody-container">
+            {modalDemandUp && <ModalMDemand/>}
+
+
             <div className='topBody'>
                 <CustomSearchBar
                     placeholder='Procure fornecedores'
@@ -48,9 +52,7 @@ export default function HomeBody() {
                     buttonFunction={callsMySupplier}
                 />
             </div>
-            
             {mySupplierModalUp && <MySupplier/>}
-
             <CustomTable />
         </div>
     );

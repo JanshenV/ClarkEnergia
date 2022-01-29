@@ -58,9 +58,10 @@ async function SuppliersList(req, res) {
 
             count = count[0].count
 
-            const totalCustomers = await knex('fornecedores')
+            await knex('fornecedores')
                 .where({ id })
-                .update({ total_clientes: count });
+                .update({ total_clientes: count })
+                .returning('*');
         };
 
         return res.status(200).json(suppliers);

@@ -40,16 +40,8 @@ export default function ModalMDemand() {
             message
         });
 
-
-
-        const filteredList = suppliersList.filter(supplier => supplier.min_kwh < user.energia_mensal);
-        if (filteredList.length === 0) {
-            await setSuppliersList(lastingSuppliersList); 
-            await setUserData(user);
-            return setModalDemandUp(false);
-        };
-
-        await setSuppliersList(filteredList);
+        const filteredList = suppliersList.filter(supplier => supplier.min_kwh <= user.energia_mensal);
+        filteredList.length === 0 ? await setSuppliersList(lastingSuppliersList) : await setSuppliersList(filteredList); 
         await setUserData(user);
         return setModalDemandUp(false);
 

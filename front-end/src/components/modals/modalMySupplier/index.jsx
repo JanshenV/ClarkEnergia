@@ -1,4 +1,4 @@
-import { SingleSupplier, UserEdit } from '../../../apiCalls/index';
+import { SingleSupplier, UserEdit, SuppliersList } from '../../../apiCalls/index';
 import useGlobal from '../../../hooks/useGlobal';
 import './styles.css';
 
@@ -13,17 +13,21 @@ export default function MySupplier() {
 
     async function mySupplierApiCall() {
         const { supplier } = await SingleSupplier(token);
-        setMySupplier(supplier);
+        await setMySupplier(supplier);
+
     };
 
     async function cancelContractApiCall() {
         const { user } = await UserEdit(token, { fornecedor_id: null });
-        setUserData(user);
-        setMySupplierModalUp(false);
+        await setUserData(user);
+        await SuppliersList(token);
+        await setMySupplierModalUp(false);
+        window.location.reload(true);
     };
 
     useEffect(() => {
         mySupplierApiCall();
+        
     }, []);
 
     const {

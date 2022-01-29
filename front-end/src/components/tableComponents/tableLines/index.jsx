@@ -1,8 +1,6 @@
 import './styles.css';
 import CustomTableButton from '../customTableButton';
 
-
-
 export default function TableLines({
     supplier, user }) {
 
