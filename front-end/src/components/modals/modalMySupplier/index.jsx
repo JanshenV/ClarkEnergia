@@ -5,14 +5,14 @@ import './styles.css';
 export default function MySupplier() {
 
     const {
-        useState, setUserData,
-        useEffect, token, setMySupplierModalUp
+        setUserData,
+        useEffect, token, setMySupplierModalUp,
+        mySupplier, setMySupplier,
     } = useGlobal();
 
-    const [mySupplier, setMySupplier] = useState({});
 
     async function mySupplierApiCall() {
-         const { supplier } = await SingleSupplier(token);
+        const { supplier } = await SingleSupplier(token);
         setMySupplier(supplier);
     };
 
@@ -20,13 +20,17 @@ export default function MySupplier() {
         const { user } = await UserEdit(token, { fornecedor_id: null });
         setUserData(user);
         setMySupplierModalUp(false);
-    }
+    };
 
     useEffect(() => {
         mySupplierApiCall();
     }, []);
 
-    const { nome, logo, estado_origem, preco_kwh, avaliacao_media, min_kwh } = mySupplier;
+    const {
+        nome, logo, estado_origem,
+        preco_kwh, avaliacao_media,
+        min_kwh, total_clientes
+    } = mySupplier;
 
     return (
         <div
@@ -58,11 +62,14 @@ export default function MySupplier() {
 
                 </div>
                 <div className='mySupplier-supplierInfo'>
-                    <p>{nome}</p>
-                    <p>Estado: {estado_origem}</p>
-                    <p>Preço por kWh: R$: {preco_kwh}</p>
-                    <p>Avaliação: {avaliacao_media}</p>
-                    <p>Limite mínimo: {min_kwh} kWh </p>
+                    <ul>
+                        <li>{nome}</li>
+                        <li>Estado: {estado_origem}</li>
+                        <li>Preço kWh: {preco_kwh}</li>
+                        <li>Limite Min: {min_kwh}</li>
+                        <li>Avaliação Média: {avaliacao_media}</li>
+                        <li>Clientes: {total_clientes}</li>
+                    </ul>
                 </div>
                
             </div>

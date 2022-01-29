@@ -8,7 +8,8 @@ export default function TableLines({
 
     const {
         logo, nome, estado_origem,
-        preco_kwh, avaliacao_media, min_kwh
+        preco_kwh, avaliacao_media, min_kwh,
+        total_clientes
     } = supplier;
 
     return (
@@ -23,19 +24,26 @@ export default function TableLines({
             </div>
 
             <div className='supplierInfo'>
-                <p>{nome}</p>
-                <p>Estado: {estado_origem}</p>
-                <p>Preço por kWh: R$: {preco_kwh}</p>
-                <p>Avaliação: {avaliacao_media}</p>
-                <p>Limite mínimo: {min_kwh} kWh </p>
+                <ul>
+                    <li>{nome}</li>
+                    <li>Estado: {estado_origem}</li>
+                    <li>Preço kWh: {preco_kwh}</li>
+                    <li>Limite Min: {min_kwh}</li>
+                    <li>Avaliação Média: {avaliacao_media}</li>
+                    <li>Clientes: {total_clientes}</li>
+                </ul>
                 
-                {(supplier.id !== user.fornecedor_id) && <CustomTableButton
-                    className='contratar'
-                    buttonText='Contratar'
-                    supplierData={supplier}
-                    userData={user}
-                />}
+                <div className='tableLine-buttons'>
+                    {(supplier.id !== user.fornecedor_id) && <CustomTableButton
+                        className='contratar'
+                        buttonText='Contratar'
+                        supplierData={supplier}
+                        userData={user}
+                    />}
+                    {/* <CustomTableButton /> */}
+                </div>
+               
             </div>
         </div>
     );
-}
+};

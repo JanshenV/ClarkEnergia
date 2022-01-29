@@ -10,7 +10,8 @@ export default function HomeBody() {
     const {
         setSuppliersList,
         lastingSuppliersList,
-        mySupplierModalUp, setMySupplierModalUp
+        mySupplierModalUp, setMySupplierModalUp,
+        userData
     } = useGlobal();
 
     async function searchSuppliers(event) {
@@ -29,7 +30,8 @@ export default function HomeBody() {
         return setSuppliersList(searchSupplier);
     };
 
-    async function mySupplier() {
+    async function callsMySupplier() {
+        if (!userData.fornecedor_id) return;
         setMySupplierModalUp(true);
     };
 
@@ -43,7 +45,7 @@ export default function HomeBody() {
                 />
                 <CustomButton
                     buttonText='Meu contrato'
-                    buttonFunction={mySupplier}
+                    buttonFunction={callsMySupplier}
                 />
             </div>
             

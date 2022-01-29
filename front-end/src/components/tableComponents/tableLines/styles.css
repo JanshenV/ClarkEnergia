@@ -1,5 +1,5 @@
 .tableLine-container {
-    background: rgb(19, 202, 74);
+    background: rgb(21, 197, 109);
     width: 100%;
     display: flex;
     align-items: center;
@@ -11,9 +11,15 @@
 
 .supplierInfo {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
     font-size: larger;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.supplierInfo li {
+    list-style-type: none;
 }
 
 .logo img {
@@ -22,4 +28,12 @@
 
 .supplierInfo p {
     padding: 5px;
+}
+
+.tableLine-buttons {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }

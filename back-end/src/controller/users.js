@@ -85,7 +85,6 @@ async function EditUser(req, res) {
             senha = encryptPassword;
         };
 
-
         const newUserData = {
             nome: nome ? nome : user.nome,
             email: email ? email : user.email,

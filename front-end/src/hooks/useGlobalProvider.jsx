@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "react-use";
-
 
 export default function useGlobalProvider() {
     const [modalSucessUp, setModalSucessUp] = useState(false);
@@ -15,13 +13,13 @@ export default function useGlobalProvider() {
     const token = localStorage.getItem('token');
 
     const [userData, setUserData] = useState({});
+
     const [suppliersList, setSuppliersList] = useState([]);
+    const [mySupplier, setMySupplier] = useState({});
     const [lastingSuppliersList, setLastingSuppliersList] = useState([]);
 
     const currentUrl = window.location.href;
 
-    
-    
     const navigate = useNavigate();
 
     return {
@@ -29,6 +27,8 @@ export default function useGlobalProvider() {
         navigate, token,
 
         userData, setUserData,
+
+        mySupplier, setMySupplier,
         suppliersList, setSuppliersList,
         lastingSuppliersList, setLastingSuppliersList,
         

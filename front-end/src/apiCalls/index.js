@@ -120,7 +120,7 @@ async function SingleSupplier(token) {
         const serverRequest = await fetch(`${BASE_URL}/suppliers/mysupplier`, requestOptions);
         const { message, supplier } = await serverRequest.json();
 
-        if (serverRequest.status !== 200) {
+        if (message) {
             return console.log(message);
         };
 
@@ -128,7 +128,7 @@ async function SingleSupplier(token) {
     } catch ({ message }) {
         return message;
     };
-}
+};
 
 module.exports = {
     UserSignUp,

@@ -1,18 +1,21 @@
 import './styles.css';
-import { UserEdit } from '../../../apiCalls';
+import { UserEdit, SingleSupplier } from '../../../apiCalls';
 import useGlobal from '../../../hooks/useGlobal';
 
 export default function CustomTableButton({
-    buttonText, supplierData, className
+    buttonText, supplierData
 }) {
 
     const {
         token,
-        setUserData
+        setUserData,
+        setMySupplier
     } = useGlobal();
 
     async function handleSubmit(id) {
-        const {message, user} = await UserEdit(token, {fornecedor_id: id});
+        const { message, user } = await UserEdit(token, { fornecedor_id: id });
+        const {supplier} = await SingleSupplier(token);
+        setMySupplier(supplier);
         setUserData(user);
     };
 

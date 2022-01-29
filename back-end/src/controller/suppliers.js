@@ -45,7 +45,7 @@ async function CreateSupplier(req, res) {
 
 async function SuppliersList(req, res) {
     try {
-        const suppliers = await knex('fornecedores');
+        const suppliers = await knex('fornecedores')
 
         return res.status(200).json(suppliers);
     } catch ({ message }) {
@@ -59,21 +59,31 @@ async function SingleSupplier(req, res) {
     const { fornecedor_id } = req.user;
 
     try {
-        const supplier = await knex('fornecedores')
+        let supplier = await knex('fornecedores')
             .where({ id: fornecedor_id })
             .first();
 
-        if (!supplier) return res.status(404).json({
-            message: 'Fornecedor não encontrado.'
-        });
+        const countCustomers = await knex('fornecedores')
+            .count('fornecedores.nome')
+            .leftJoin('usuarios', 'usuarios.fornecedor_id', 'fornecedores.id')
+            .where('fornecedores.id', fornecedor_id)
+            .first();
 
-        return res.status(200).json({ supplier });
+        supplier = await knex('fornecedores')
+            .update({ total_clientes: countCustomers.count })
+            .where({ id: fornecedor_id })
+            .returning('*');
+
+        return res.status(200).json({
+            supplier: supplier[0]
+        });
     } catch ({ message }) {
         return res.status(400).json({
             message
         });
     };
 };
+
 
 module.exports = {
     CreateSupplier,
