@@ -8,6 +8,7 @@ export default function ModalMDemand() {
         useState, token,
         userData, suppliersList,
         setSuppliersList, setUserData,
+        lastingSuppliersList,
         error, setError,
         setModalDemandUp,
     } = useGlobal();
@@ -39,11 +40,19 @@ export default function ModalMDemand() {
             message
         });
 
+
+
         const filteredList = suppliersList.filter(supplier => supplier.min_kwh < user.energia_mensal);
-        await setUserData(user);
+        if (filteredList.length === 0) {
+            await setSuppliersList(lastingSuppliersList); 
+            await setUserData(user);
+            return setModalDemandUp(false);
+        };
+
         await setSuppliersList(filteredList);
-        
+        await setUserData(user);
         return setModalDemandUp(false);
+
     };
     
     return (

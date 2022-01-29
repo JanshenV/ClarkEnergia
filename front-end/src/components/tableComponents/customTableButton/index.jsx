@@ -1,5 +1,7 @@
 import './styles.css';
-import { UserEdit, SingleSupplier } from '../../../apiCalls';
+import {
+    UserEdit, SingleSupplier, SuppliersList,
+} from '../../../apiCalls';
 import useGlobal from '../../../hooks/useGlobal';
 
 export default function CustomTableButton({
@@ -14,7 +16,8 @@ export default function CustomTableButton({
 
     async function handleSubmit(id) {
         const { message, user } = await UserEdit(token, { fornecedor_id: id });
-        const {supplier} = await SingleSupplier(token);
+        const { supplier } = await SingleSupplier(token);
+        await SuppliersList(token);
         setMySupplier(supplier);
         setUserData(user);
     };
