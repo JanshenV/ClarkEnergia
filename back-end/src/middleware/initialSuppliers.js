@@ -1,6 +1,5 @@
 const knex = require('../database/connection');
 
-
 async function InitialSuppliers(req, res, next) {
     try {
         const suppliers = [{
@@ -51,4 +50,4 @@ async function InitialSuppliers(req, res, next) {
     };
 };
 
-module.exports = { InitialSuppliers }
+module.exports = { InitialSuppliers };

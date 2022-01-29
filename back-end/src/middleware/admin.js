@@ -1,7 +1,6 @@
 const knex = require('../database/connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
 const findEmail = require('../validations/findEmail');
 
 async function CreateAdmin(req, res, next) {
@@ -63,4 +62,4 @@ async function AdminToken(req, res, next) {
 module.exports = {
     CreateAdmin,
     AdminToken
-}
+};

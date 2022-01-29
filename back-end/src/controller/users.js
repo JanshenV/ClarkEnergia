@@ -1,7 +1,6 @@
 const knex = require('../database/connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
 const findEmail = require('../validations/findEmail');
 
 const {
@@ -9,7 +8,6 @@ const {
     yupEditUser,
     yupUserLogin
 } = require('../validations/yupUsers');
-
 
 async function CreateUser(req, res) {
     let {
@@ -166,7 +164,6 @@ async function UserLogin(req, res) {
         );
 
         return res.status(200).json({ token });
-
     } catch ({ message }) {
         return res.status(400).json({
             message
@@ -182,7 +179,7 @@ async function UserProfile(req, res) {
 async function ListOfUsers(req, res) {
     try {
         const users = await knex('usuarios');
-        const usersWithoutPassword = []
+        const usersWithoutPassword = [];
 
         for (const user of users) {
             const { senha: _, ...userData } = user;
@@ -214,8 +211,7 @@ async function SingleUser(req, res) {
         });
 
         const { senha: _, ...userData } = singleUser;
-        singleUser = userData
-
+        singleUser = userData;
         return res.status(200).json(singleUser);
     } catch ({ message }) {
         return res.status(400).json({

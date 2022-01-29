@@ -1,6 +1,5 @@
 const yup = require('./yup');
 
-
 const yupCreateUser = yup.object().shape({
     nome: yup.string().required(),
     email: yup.string().email().required(),
@@ -22,4 +21,4 @@ module.exports = {
     yupCreateUser,
     yupEditUser,
     yupUserLogin
-}
+};

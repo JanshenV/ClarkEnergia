@@ -8,7 +8,6 @@ async function FindEmail(email) {
         if (existingEmail) return existingEmail;
 
         return existingEmail = false;
-
     } catch ({ message }) {
         return message
     };

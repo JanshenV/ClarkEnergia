@@ -24,7 +24,6 @@ async function VerifyToken(req, res, next) {
         req.user = userData;
 
         next();
-
     } catch ({ message }) {
         return res.status(400).json({
             message
