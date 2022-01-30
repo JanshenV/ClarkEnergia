@@ -4,3 +4,6 @@
   - Não conheço testes automatizados, mas utilizei o Insomnia para testes, além de testar enquanto desenvolvia.
   - Não está adaptada para rodar em Kubernetes pois não conheço também. Mas vou aprender em uma próxima oportunidade.
   - As variáveis são em inglês pois acredito que além de auto explicativo, as palavras são mais curtas, tornando o código menos longo.
+
+## Quanto aos commits:
+  - Tentei o melhor que pude deixa-los pequenos e consistentes. Sei que há espaço para melhorar, e vou procurar preencher esse espaço.
