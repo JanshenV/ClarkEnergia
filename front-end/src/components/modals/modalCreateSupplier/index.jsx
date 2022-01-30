@@ -2,7 +2,6 @@ import useGlobal from '../../../hooks/useGlobal';
 import { CreateSupplier } from '../../../apiCalls';
 import './styles.css';
 
-
 export default function ModalCreateSupplier() {
 
     const {

@@ -128,7 +128,7 @@ export default function MySupplier() {
                         <li>Clientes: {total_clientes}</li>
                     </ul>
 
-                    <div className="tableLine-rating">
+                   { <div className="tableLine-rating">
                         <label>Avaliação: </label>
                         <input
                             type="number"
@@ -136,7 +136,7 @@ export default function MySupplier() {
                             onKeyDown={(event) => handleRatingValue(event)}
                             placeholder={`1 a 5`}
                         />
-                    </div>
+                    </div>}
                 </div>
                
             </div>

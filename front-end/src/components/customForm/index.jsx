@@ -1,7 +1,6 @@
 import useGlobal from '../../hooks/useGlobal';
 import ModalSucess from '../modals/modalSucess';
 import CustomButton from '../customButton';
-
 import './styles.css'
 
 export default function CustomForm({

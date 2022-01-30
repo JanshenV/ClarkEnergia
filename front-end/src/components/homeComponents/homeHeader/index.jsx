@@ -1,5 +1,4 @@
 import './styles.css';
-import EditIcon from '../../../assets/editIcon.png';
 import LogoutIcon from '../../../assets/logoutIcon.svg';
 import ArrowDownIcon from '../../../assets/arrowDownIcon.png';
 import useGlobal from '../../../hooks/useGlobal';

@@ -74,7 +74,6 @@ async function UserEdit(token, data) {
         const { message, user } = await serverRequest.json();
 
         if (message) {
-            console.log(message);
             return { message };
         };
 
