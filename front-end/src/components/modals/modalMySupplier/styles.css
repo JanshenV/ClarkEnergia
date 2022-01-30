@@ -50,3 +50,34 @@
     color: white;
     border-radius: 20px;
 }
+
+.tableLine-buttons {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+}
+
+.mySupplier-supplierInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 75%;
+}
+
+.tableLine-rating {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    color: white;
+}
+
+.tableLine-rating input {
+    height: 30px;
+    border-radius: 10px;
+    padding: 10px;
+}

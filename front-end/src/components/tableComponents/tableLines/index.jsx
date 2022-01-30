@@ -22,12 +22,12 @@ export default function TableLines({
             </div>
 
             <div className='supplierInfo'>
-                <ul>
+                <ul className='supplierInfo-ul'>
                     <li>{nome}</li>
                     <li>Estado: {estado_origem}</li>
                     <li>Preço kWh: {preco_kwh}</li>
                     <li>Limite Min: {min_kwh}</li>
-                    <li>Avaliação Média: {avaliacao_media}</li>
+                    <li>Avaliação Média: {avaliacao_media}%</li>
                     <li>Clientes: {total_clientes}</li>
                 </ul>
                 
@@ -35,16 +35,11 @@ export default function TableLines({
                     {(supplier.id !== user.fornecedor_id &&
                         user.nome !== 'Clarke Admin') &&
                         <CustomTableButton
-                        className='contratar'
-                        buttonText='Contratar'
-                        supplierData={supplier}
-                        userData={user}
+                            buttonText='Contratar'
+                            supplierData={supplier}
+                            userData={user}
                         />}
-                        
-                    <CustomTableButton
-                        buttonText = 'Avaliar' />
                 </div>
-               
             </div>
         </div>
     );

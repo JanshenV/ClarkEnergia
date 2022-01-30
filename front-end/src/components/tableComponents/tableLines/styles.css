@@ -3,7 +3,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     margin: 20px 0 20px 0;
     border-radius: 20px;
     border-bottom: 15px solid rgba(14, 55, 58, 0.253);
@@ -12,28 +11,22 @@
 .supplierInfo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 25%;
     font-size: larger;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 40%;
 }
 
-.supplierInfo li {
+.supplierInfo-ul {
+    display: flex;
+    flex-direction: column;
+}
+
+li {
     list-style-type: none;
 }
 
 .logo img {
     width: 160px;
-}
-
-.supplierInfo p {
-    padding: 5px;
-}
-
-.tableLine-buttons {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    border-radius: 20px;
+    margin-left: 100%;
 }

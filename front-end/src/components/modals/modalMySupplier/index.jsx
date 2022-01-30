@@ -1,20 +1,26 @@
-import { SingleSupplier, UserEdit, SuppliersList } from '../../../apiCalls/index';
+import {
+    SingleSupplier, SuppliersList,
+    EditSupplier, UserEdit,
+} from '../../../apiCalls/index';
 import useGlobal from '../../../hooks/useGlobal';
 import './styles.css';
 
 export default function MySupplier() {
 
     const {
-        setUserData,
+        setUserData, useState,
+        userData,
         useEffect, token, setMySupplierModalUp,
         mySupplier, setMySupplier,
     } = useGlobal();
 
+    const [rating, setRating] = useState({
+        avaliacao_media: Number(0)
+    });
 
     async function mySupplierApiCall() {
         const { supplier } = await SingleSupplier(token);
         await setMySupplier(supplier);
-
     };
 
     async function cancelContractApiCall() {
@@ -24,6 +30,53 @@ export default function MySupplier() {
         await setMySupplierModalUp(false);
         window.location.reload(true);
     };
+
+    async function handleSubmitRating() {
+        let ratedByUser = localStorage.getItem('ratedByUser');
+
+        if (ratedByUser) {
+            ratedByUser = await JSON.parse(ratedByUser);
+
+            if (ratedByUser.user_id === userData.id &&
+                ratedByUser.supplier_id === mySupplier.id &&
+                ratedByUser.rated) return alert('Só é possível avaliar uma vez');
+        };
+
+        const { avaliacao_media } = rating;
+
+        ratedByUser = {
+            user_id: userData.id,
+            supplier_id: mySupplier.id,
+            rated: true
+        };
+        
+        localStorage.setItem('ratedByUser', JSON.stringify(ratedByUser));
+        const serverResponse = await EditSupplier(token, { avaliacao_media });
+        if (serverResponse.message) return console.log(serverResponse.message);
+
+        await setMySupplier(setMySupplier);
+        await setMySupplierModalUp(false);
+        window.location.reload(true);
+    };
+
+    async function handleRatingValue(event){
+        const inputValue = event.target.value;
+        const eventKey = event.key;
+        const { avaliacao_media } = rating;
+
+        if (eventKey === 'Enter') {
+            if (avaliacao_media < 1 || avaliacao_media > 5) {
+                return alert(`Avaliação entre 1 e 5`);
+            };
+
+            return handleSubmitRating();
+        }
+
+        setRating({
+            avaliacao_media: inputValue
+        });
+    };
+    
 
     useEffect(() => {
         mySupplierApiCall();
@@ -74,6 +127,16 @@ export default function MySupplier() {
                         <li>Avaliação Média: {avaliacao_media}</li>
                         <li>Clientes: {total_clientes}</li>
                     </ul>
+
+                    <div className="tableLine-rating">
+                        <label>Avaliação: </label>
+                        <input
+                            type="number"
+                            onChange={(event) => handleRatingValue(event)}
+                            onKeyDown={(event) => handleRatingValue(event)}
+                            placeholder={`1 a 5`}
+                        />
+                    </div>
                 </div>
                
             </div>

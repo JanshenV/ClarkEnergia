@@ -153,6 +153,28 @@ async function CreateSupplier(token, data) {
     };
 };
 
+async function EditSupplier(token, data) {
+    try {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/json',
+                'authorization': token
+            },
+            body: JSON.stringify(data)
+        };
+
+        const serverRequest = await fetch(`${BASE_URL}/suppliers`, requestOptions);
+        const { message, supplier } = await serverRequest.json();
+
+        if (message) return { message };
+
+        return { supplier };
+    } catch ({ message }) {
+        return message;
+    };
+};
+
 module.exports = {
     UserSignUp,
     UserLogin,
@@ -160,5 +182,6 @@ module.exports = {
     UserEdit,
     SuppliersList,
     SingleSupplier,
-    CreateSupplier
+    CreateSupplier,
+    EditSupplier
 };

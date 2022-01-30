@@ -92,9 +92,44 @@ async function SingleSupplier(req, res) {
     };
 };
 
+async function EditSupplier(req, res) {
+    const { fornecedor_id } = req.user;
+    const { avaliacao_media } = req.body;
+
+    try {
+        let supplier = await knex('fornecedores')
+            .where({ id: fornecedor_id })
+            .first();
+
+        const { count } = await knex('usuarios')
+            .count('id')
+            .first();
+
+        if (!supplier) return res.status(404).json({
+            message: 'Fornecedor não encontrado.'
+        });
+
+        const avaliacao = ((avaliacao_media / count) + supplier.avaliacao_media) * (100 / count);
+
+        supplier = await knex('fornecedores')
+            .where({ id: fornecedor_id })
+            .update({ avaliacao_media: avaliacao })
+            .returning('*');
+
+        return res.status(200).json({
+            supplier: supplier[0]
+        });
+    } catch ({ message }) {
+        return res.status(400).json({
+            message
+        });
+    };
+};
+
 
 module.exports = {
     CreateSupplier,
     SuppliersList,
-    SingleSupplier
+    SingleSupplier,
+    EditSupplier
 };
