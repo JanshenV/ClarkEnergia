@@ -1,4 +1,4 @@
-.hire {
+.Contratar {
     margin: 20px 0 20px 0;
     width: 100px;
     height: 40px;
@@ -8,7 +8,17 @@
     color: white;
 }
 
-.hire:hover {
+.Contratar:hover {
     background: white;
     color: rgb(2, 167, 2);
+}
+
+.Avaliar {
+    margin: 20px 0 20px 0;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgb(255, 217, 0);
+    cursor: pointer;
+    color: rgb(0, 0, 0);
 }

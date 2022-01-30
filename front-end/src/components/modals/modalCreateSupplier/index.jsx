@@ -28,8 +28,6 @@ export default function ModalCreateSupplier() {
             message: ''
         });
 
-        console.log(error);
-
         if (inputID === 'name') return setSupplierFormData({
             ...supplierFormData,
             nome: inputValue
@@ -56,7 +54,6 @@ export default function ModalCreateSupplier() {
         });
     };
 
-
     async function handleSubmit(event) {
         event.preventDefault();
         
@@ -67,20 +64,22 @@ export default function ModalCreateSupplier() {
 
         setModalCreateSupplierUp(false);
         window.location.reload(true);
-
     };
 
     async function closeModal() {
         setModalCreateSupplierUp(false);
     };
 
-    
-
     return (
         <div className='createSupplier-backdrop'>
             <div className="createSupplier-container">
 
-                {error.message && <p className='createSupplier-error'>{error.message}</p>}
+                {error.message &&
+                    <p className='createSupplier-error'>
+                        {error.message}
+                    </p>
+                }
+
                 <form
                     onSubmit={(event) => handleSubmit(event)}
                     className="createSupplier-form">
@@ -125,16 +124,13 @@ export default function ModalCreateSupplier() {
                     />
 
                     <div className='createSupplierForm-buttons'>
-                        <button
-                            className='confirmSubmitButton'
-                        >
+                        <button className='confirmSubmitButton'>
                             Confirmar
                         </button>
 
                         <button
                             className='cancelSubmitButton'
-                            onClick={() => closeModal()}
-                        >
+                            onClick={() => closeModal()}>
                             Cancelar
                         </button>
                     </div>
@@ -142,4 +138,4 @@ export default function ModalCreateSupplier() {
             </div>
         </div>
     );
-}
+};

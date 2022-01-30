@@ -39,8 +39,10 @@ export default function TableLines({
                         buttonText='Contratar'
                         supplierData={supplier}
                         userData={user}
-                    />}
-                    {/* <CustomTableButton /> */}
+                        />}
+                        
+                    <CustomTableButton
+                        buttonText = 'Avaliar' />
                 </div>
                
             </div>

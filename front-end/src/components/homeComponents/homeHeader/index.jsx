@@ -5,7 +5,7 @@ import ArrowDownIcon from '../../../assets/arrowDownIcon.png';
 import useGlobal from '../../../hooks/useGlobal';
 
 export default function HomeHeader() {
-    
+
     const {useState, navigate, userData} = useGlobal();
     const [tinyModalUp, setTinyModalUp] = useState(true);
 
@@ -17,7 +17,6 @@ export default function HomeHeader() {
         localStorage.removeItem('token');
         setTinyModalUp(true);
         return navigate('/');
-         
     };
 
 
@@ -37,7 +36,9 @@ export default function HomeHeader() {
 
                 <div
                     className={`tinyModal
-                     ${tinyModalUp ? 'hidden' : ''}`}>
+                     ${tinyModalUp ?
+                            'hidden' : ''}`
+                    }>
 
                     <div className="icon">
                         <img
@@ -45,9 +46,9 @@ export default function HomeHeader() {
                             src={LogoutIcon}
                             alt="User logout"
                         />
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
     );
-}
+};

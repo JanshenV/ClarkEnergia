@@ -91,15 +91,15 @@ export default function CustomForm({
                         {error.message}
                     </p>
                 }
-                
-                
+                  
                 {title === "Cadastro" &&
                     <>
                         <label>Nome: </label>
                         <input
                             type="text"
                             onChange={(event) => handleValues(event)}
-                            required/>
+                            required
+                        />
                     </>
                 }
 
@@ -117,24 +117,28 @@ export default function CustomForm({
                     onChange={(event) => handleValues(event)}
                 />
 
-                <CustomButton buttonText={buttonText}/>
-                
+                <CustomButton
+                    buttonText={buttonText}
+                />
             </form>
 
             <div className='signup-login-container'>
                 <p>
                     {title === 'Login' ?
-                        'Não cadastrado ?' : 'Já cadastrado ?'}
+                        'Não cadastrado ?' : 'Já cadastrado ?'
+                    }
                     
                     <button
                         onClick={() => title === 'Login' ?
-                            navigate('/signup') : navigate('/')}>
+                            navigate('/signup') : navigate('/')}
+                    >
                         {title === 'Login' ?
-                            'Cadastre-se' : 'Login'}
+                            'Cadastre-se' : 'Login'
+                        }
                     </button>
                 </p>
             </div>
-            {modalSucessUp && <ModalSucess/>}
+            {modalSucessUp && <ModalSucess />}
         </div>
     );
 };

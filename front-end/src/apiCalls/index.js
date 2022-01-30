@@ -1,5 +1,6 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+//Users
 async function UserSignUp(userData) {
     try {
         const requestOptions = {
@@ -83,6 +84,8 @@ async function UserEdit(token, data) {
     };
 };
 
+
+//Suppliers
 async function SuppliersList(token) {
     try {
         const requestOptions = {

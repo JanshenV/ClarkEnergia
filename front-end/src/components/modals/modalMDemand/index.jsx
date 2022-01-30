@@ -44,7 +44,6 @@ export default function ModalMDemand() {
         filteredList.length === 0 ? await setSuppliersList(lastingSuppliersList) : await setSuppliersList(filteredList); 
         await setUserData(user);
         return setModalDemandUp(false);
-
     };
     
     return (
@@ -52,23 +51,26 @@ export default function ModalMDemand() {
             <div className="mdemand-modal">
                 <h1>Olá {nome}!</h1>
 
-                {error.message ? 
-                    <p className='error'>{error.message}</p> :
-                    <p>Por favor, nos informe sua demanda mensal de energia.</p> 
+                {error.message ?
+                    <p className='error'>
+                        {error.message}
+                    </p> :
+                    <p>Por favor, nos informe sua demanda mensal de energia.
+
+                    </p>
                 }
                 
-
                 <input
                     type="number"
-                    onChange={(event) => handleDemandValue(event) }
+                    onChange={(event) => handleDemandValue(event)}
                     placeholder='3000'
                 />
 
                 <button
-                    onClick={() => handleSubmit() }>
+                    onClick={() => handleSubmit()}>
                     Confirmar
                 </button>
             </div>
         </div>
     );
-}
+};

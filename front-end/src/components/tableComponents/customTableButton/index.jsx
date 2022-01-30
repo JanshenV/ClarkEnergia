@@ -5,7 +5,7 @@ import {
 import useGlobal from '../../../hooks/useGlobal';
 
 export default function CustomTableButton({
-    buttonText, supplierData
+    buttonText, supplierData, className
 }) {
 
     const {
@@ -26,7 +26,7 @@ export default function CustomTableButton({
     return (
         <button
             onClick={() => handleSubmit(supplierData.id)}
-            className='hire'>
+            className={buttonText}>
             {buttonText}
         </button>
     );

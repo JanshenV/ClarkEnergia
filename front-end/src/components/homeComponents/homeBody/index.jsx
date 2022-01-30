@@ -6,10 +6,8 @@ import CustomButton from '../../customButton';
 import MySupplier from '../../modals/modalMySupplier'
 import ModalMDemand from '../../modals/modalMDemand';
 import ModalCreateSupplier from '../../modals/modalCreateSupplier';
-import { CreateSupplier } from '../../../apiCalls/index';
 
-export default function HomeBody({user}) {
-
+export default function HomeBody() {
     const {
         setSuppliersList, lastingSuppliersList,
         userData,
@@ -41,30 +39,30 @@ export default function HomeBody({user}) {
 
     async function insertSupplier() {
         setModalCreateSupplierUp(true);
-    }
+    };
 
     return (
         <div className="homeBody-container">
             {modalDemandUp && <ModalMDemand />}
-            {modalCreateSupplierUp && <ModalCreateSupplier/>}
-
+            {modalCreateSupplierUp && <ModalCreateSupplier />}
 
             <div className='topBody'>
                 <CustomSearchBar
                     placeholder='Procure fornecedores'
                     searchFunction={searchSuppliers}
                 />
-                {(userData.nome !== 'Clarke Admin') ? 
+                {(userData.nome !== 'Clarke Admin') ?
                     <CustomButton
-                    buttonText='Meu contrato'
+                        buttonText='Meu contrato'
                         buttonFunction={callsMySupplier}
                     /> :
                     <CustomButton
                         buttonText='Adiconar Fornecedor'
                         buttonFunction={insertSupplier}
-                    />}
+                    />
+                }
             </div>
-            {mySupplierModalUp && <MySupplier/>}
+            {mySupplierModalUp && <MySupplier />}
             <CustomTable />
         </div>
     );

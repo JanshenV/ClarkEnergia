@@ -1,14 +1,15 @@
 import './styles.css';
 
-
-export default function CustomButton({buttonText, buttonFunction }) {
+export default function CustomButton({
+    buttonText, buttonFunction
+}) {
     return (
         <button
             className='customButton'
             onClick={() => {
                 if (buttonFunction) return buttonFunction();
-            }}
-        >{buttonText}
+            }}>
+            {buttonText}
         </button>
     );
-}
+};
