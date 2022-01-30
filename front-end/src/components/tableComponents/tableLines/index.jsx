@@ -27,7 +27,7 @@ export default function TableLines({
                     <li>Estado: {estado_origem}</li>
                     <li>Preço kWh: {preco_kwh}</li>
                     <li>Limite Min: {min_kwh}</li>
-                    <li>Avaliação Média: {avaliacao_media}%</li>
+                    <li>Avaliação Média: {Math.ceil(avaliacao_media)}%</li>
                     <li>Clientes: {total_clientes}</li>
                 </ul>
                 
